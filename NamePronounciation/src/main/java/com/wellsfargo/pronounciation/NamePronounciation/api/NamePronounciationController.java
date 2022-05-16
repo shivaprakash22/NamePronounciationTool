@@ -18,13 +18,13 @@ class NamePronounciationController {
     NamePronounciation namePronounciation;
 
     @RequestMapping(value="/pronounciation/v1",method= RequestMethod.POST)
-    public @ResponseBody ResponseEntity<PronounciationDetails> create(@RequestBody PronounciationDetails details) {
+    public @ResponseBody ResponseEntity<PronounciationDetails> create(@RequestBody PronounciationDetails pronounciationDetails) {
 
         Gson gson = new Gson();
-        String json = gson.toJson(details);
+        String json = gson.toJson(pronounciationDetails);
         System.out.println(json);
-        namePronounciation.pronounceMessage(details);
-        return new ResponseEntity<>(details, HttpStatus.CREATED);
+        namePronounciation.pronounceMessage(pronounciationDetails);
+        return new ResponseEntity<>(pronounciationDetails, HttpStatus.OK);
     }
 
 }
